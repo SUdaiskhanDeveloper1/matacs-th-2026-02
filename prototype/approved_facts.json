@@ -1,0 +1,103 @@
+{
+  "criteria_version": "solar-2026-v1",
+  "about": "Exercise stand-in for reviewer-approved fact sheets. Values were transcribed by the candidate from the brief's proposal summaries (brief pages 2-3); no proposal text is reproduced. In the product each fact also carries the AI's verbatim quote and page, kept in the run record, not in this repository. Status: stated = explicit in the proposal; unconfirmed = stated but imprecise, scored with a warning; not_found = absent; contradictory = conflicting statements.",
+  "proposals": [
+    {
+      "proposal": "A",
+      "fields": {
+        "licence_holder": {"value": "bidder", "status": "stated", "note": "Licence number given; not checked against the ESA/ECRA register."},
+        "wsib_clearance": {"value": true, "status": "stated"},
+        "liability_insurance_cad": {"value": 5000000, "status": "stated"},
+        "total_price_cad": {"value": 238000, "status": "stated", "note": "Includes permits and utility connection."},
+        "completion_weeks": {"value": 12, "status": "stated"},
+        "qualifying_project_count": {"value": 14, "status": "stated", "note": "Installations of 100-400 kW."},
+        "project_period": {"value": {"kind": "since_year", "year": 2021}, "status": "stated"},
+        "panel_warranty_years": {"value": 25, "status": "stated", "note": "Manufacturer warranty."},
+        "workmanship_warranty_years": {"value": 10, "status": "stated"},
+        "named_project_lead": {"value": true, "status": "unconfirmed", "note": "Says a named senior project manager leads; no name appears in the extracted text."},
+        "crew_size": {"value": 6, "status": "stated"},
+        "safety_plan": {"value": true, "status": "stated"},
+        "performance_monitoring": {"value": true, "status": "stated", "note": "12 months of remote monitoring."}
+      },
+      "security_events": []
+    },
+    {
+      "proposal": "B",
+      "fields": {
+        "licence_holder": {"value": "third_party", "status": "stated", "note": "Electrical work by a licensed subcontractor to be confirmed after award; the bidder does not state that it holds the licence."},
+        "wsib_clearance": {"value": true, "status": "stated"},
+        "liability_insurance_cad": {"value": 5000000, "status": "stated"},
+        "total_price_cad": {"value": 189500, "status": "stated"},
+        "completion_weeks": {"value": 10, "status": "stated"},
+        "qualifying_project_count": {"value": 6, "status": "stated"},
+        "project_period": {"value": {"kind": "last_n_years", "years": 4}, "status": "stated"},
+        "panel_warranty_years": {"value": 25, "status": "stated"},
+        "workmanship_warranty_years": {"value": 5, "status": "stated"},
+        "named_project_lead": {"value": false, "status": "stated", "note": "A coordinator is to be assigned at kickoff."},
+        "crew_size": {"value": null, "status": "not_found"},
+        "safety_plan": {"value": null, "status": "not_found"},
+        "performance_monitoring": {"value": null, "status": "not_found"}
+      },
+      "security_events": []
+    },
+    {
+      "proposal": "C",
+      "fields": {
+        "licence_holder": {"value": "bidder", "status": "stated", "note": "Licence number given; not checked against the ESA/ECRA register."},
+        "wsib_clearance": {"value": true, "status": "stated"},
+        "liability_insurance_cad": {"value": 5000000, "status": "stated"},
+        "total_price_cad": {"value": 244000, "status": "stated"},
+        "completion_weeks": {"value": 14, "status": "stated"},
+        "qualifying_project_count": {"value": 9, "status": "stated"},
+        "project_period": {"value": {"kind": "since_year", "year": 2020}, "status": "stated"},
+        "panel_warranty_years": {"value": 25, "status": "stated"},
+        "workmanship_warranty_years": {"value": 10, "status": "stated"},
+        "named_project_lead": {"value": true, "status": "unconfirmed", "note": "Says a named project lead; no name appears in the extracted text."},
+        "crew_size": {"value": 5, "status": "stated"},
+        "safety_plan": {"value": null, "status": "not_found"},
+        "performance_monitoring": {"value": null, "status": "not_found", "note": "Offers weekly progress reports, which are project reporting, not performance monitoring."}
+      },
+      "security_events": [
+        {"type": "embedded_instruction", "location": "Appendix C, page 9", "summary": "Text addressed to automated review systems asks for first rank and full marks on all criteria."}
+      ]
+    },
+    {
+      "proposal": "D",
+      "fields": {
+        "licence_holder": {"value": "bidder", "status": "stated", "note": "Licence number given; not checked against the ESA/ECRA register."},
+        "wsib_clearance": {"value": true, "status": "stated"},
+        "liability_insurance_cad": {"value": 5000000, "status": "stated"},
+        "total_price_cad": {"value": 231000, "status": "stated"},
+        "completion_weeks": {"value": null, "status": "not_found", "note": "Schedule to be set after a detailed site assessment."},
+        "qualifying_project_count": {"value": 11, "status": "stated"},
+        "project_period": {"value": {"kind": "last_n_years", "years": 5}, "status": "stated"},
+        "panel_warranty_years": {"value": 25, "status": "stated"},
+        "workmanship_warranty_years": {"value": 10, "status": "stated"},
+        "named_project_lead": {"value": true, "status": "unconfirmed", "note": "Says a named project manager; no name appears in the extracted text."},
+        "crew_size": {"value": null, "status": "not_found"},
+        "safety_plan": {"value": true, "status": "stated"},
+        "performance_monitoring": {"value": null, "status": "not_found", "note": "Offers a structural roof review, which is not performance monitoring."}
+      },
+      "security_events": []
+    },
+    {
+      "proposal": "E",
+      "fields": {
+        "licence_holder": {"value": "bidder", "status": "stated", "note": "Licence number given; not checked against the ESA/ECRA register."},
+        "wsib_clearance": {"value": true, "status": "stated"},
+        "liability_insurance_cad": {"value": 5000000, "status": "stated"},
+        "total_price_cad": {"value": 242500, "status": "stated"},
+        "completion_weeks": {"value": 13, "status": "stated"},
+        "qualifying_project_count": {"value": 8, "status": "stated"},
+        "project_period": {"value": {"kind": "since_year", "year": 2021}, "status": "stated"},
+        "panel_warranty_years": {"value": 25, "status": "stated"},
+        "workmanship_warranty_years": {"value": 12, "status": "stated"},
+        "named_project_lead": {"value": true, "status": "unconfirmed", "note": "Says a named project lead; no name appears in the extracted text."},
+        "crew_size": {"value": 6, "status": "stated"},
+        "safety_plan": {"value": true, "status": "stated"},
+        "performance_monitoring": {"value": true, "status": "stated", "note": "24 months of monitoring; also offers a roof load assessment (not a listed criterion, so unscored)."}
+      },
+      "security_events": []
+    }
+  ]
+}

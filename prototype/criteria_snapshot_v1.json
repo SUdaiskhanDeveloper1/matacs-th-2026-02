@@ -1,0 +1,165 @@
+{
+  "category": "Commercial Solar Installation",
+  "criteria_version": "solar-2026-v1",
+  "about": "Exercise copy of the immutable criteria snapshot an admin publishes from the admin screens. Every value below is configuration, not code.",
+  "evaluation_date": "2026-10-30",
+  "currency": "CAD",
+  "fields": {
+    "licence_holder": {
+      "type": "enum",
+      "values": ["bidder", "third_party", "none"],
+      "absent_means": "unknown",
+      "definition": "Who holds the Ontario electrical contractor licence for this work: the bidding company itself, a third party such as a subcontractor, or nobody."
+    },
+    "wsib_clearance": {
+      "type": "boolean",
+      "absent_means": "unknown",
+      "definition": "The proposal states that the bidder has current WSIB clearance."
+    },
+    "liability_insurance_cad": {
+      "type": "number",
+      "unit": "CAD",
+      "absent_means": "unknown",
+      "definition": "Liability insurance coverage amount the bidder states it carries."
+    },
+    "total_price_cad": {
+      "type": "number",
+      "unit": "CAD",
+      "absent_means": "unknown",
+      "definition": "Total contract price stated for the whole project."
+    },
+    "completion_weeks": {
+      "type": "number",
+      "unit": "weeks from award",
+      "absent_means": "unknown",
+      "definition": "Committed time from contract award to a complete system."
+    },
+    "qualifying_project_count": {
+      "type": "integer",
+      "absent_means": "unknown",
+      "definition": "Number of completed commercial solar installations of at least 100 kW the bidder claims."
+    },
+    "project_period": {
+      "type": "period",
+      "absent_means": "unknown",
+      "definition": "The period those projects are said to fall within, as stated (for example since a year, or within the last N years)."
+    },
+    "panel_warranty_years": {
+      "type": "number",
+      "unit": "years",
+      "absent_means": "unknown",
+      "definition": "Length of the panel (product) warranty offered."
+    },
+    "workmanship_warranty_years": {
+      "type": "number",
+      "unit": "years",
+      "absent_means": "unknown",
+      "definition": "Length of the bidder's own workmanship (installation) warranty."
+    },
+    "named_project_lead": {
+      "type": "boolean",
+      "absent_means": "not_offered",
+      "definition": "A specific person is identified as project lead or project manager."
+    },
+    "crew_size": {
+      "type": "integer",
+      "absent_means": "not_offered",
+      "definition": "Number of people in the dedicated installation crew."
+    },
+    "safety_plan": {
+      "type": "boolean",
+      "absent_means": "not_offered",
+      "definition": "A site safety plan is included."
+    },
+    "performance_monitoring": {
+      "type": "boolean",
+      "absent_means": "not_offered",
+      "definition": "Post-installation system performance monitoring is offered. Project progress reporting alone does not count."
+    }
+  },
+  "mandatory": [
+    {
+      "id": "M1",
+      "label": "Ontario electrical contractor licence held by the bidder",
+      "checks": [{"field": "licence_holder", "test": "equals", "value": "bidder"}]
+    },
+    {
+      "id": "M2",
+      "label": "WSIB clearance and $5M liability insurance",
+      "checks": [
+        {"field": "wsib_clearance", "test": "is_true"},
+        {"field": "liability_insurance_cad", "test": "at_least", "value": 5000000}
+      ]
+    }
+  ],
+  "feasibility": [
+    {
+      "id": "F1",
+      "label": "Within budget ceiling",
+      "checks": [{"field": "total_price_cad", "test": "at_most", "value": 260000}]
+    },
+    {
+      "id": "F2",
+      "label": "Complete within 16 weeks of award",
+      "checks": [{"field": "completion_weeks", "test": "at_most", "value": 16}]
+    }
+  ],
+  "weighted": [
+    {
+      "id": "experience",
+      "label": "Relevant experience",
+      "weight": 30,
+      "method": "count_in_window",
+      "count_field": "qualifying_project_count",
+      "period_field": "project_period",
+      "window_years": 5,
+      "zero_at": 0,
+      "full_at": 10
+    },
+    {
+      "id": "price",
+      "label": "Price",
+      "weight": 25,
+      "method": "linear",
+      "field": "total_price_cad",
+      "zero_at": 260000,
+      "full_at": 195000
+    },
+    {
+      "id": "timeline",
+      "label": "Timeline",
+      "weight": 15,
+      "method": "linear",
+      "field": "completion_weeks",
+      "zero_at": 16,
+      "full_at": 8
+    },
+    {
+      "id": "warranty",
+      "label": "Warranty",
+      "weight": 15,
+      "method": "composite",
+      "parts": [
+        {"field": "panel_warranty_years", "share": 40, "zero_at": 0, "full_at": 25},
+        {"field": "workmanship_warranty_years", "share": 60, "zero_at": 0, "full_at": 15}
+      ]
+    },
+    {
+      "id": "team",
+      "label": "Team and approach",
+      "weight": 15,
+      "method": "checklist",
+      "items": [
+        {"field": "named_project_lead", "points": 25},
+        {"field": "crew_size", "points": 25},
+        {"field": "safety_plan", "points": 25},
+        {"field": "performance_monitoring", "points": 25}
+      ]
+    }
+  ],
+  "policies": {
+    "incomplete_project_dates": "score_as_stated_with_warning",
+    "security_event": "hold",
+    "decimal_places": 2
+  }
+}
