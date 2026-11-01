@@ -56,15 +56,4 @@ python -m unittest -v test_triage
 
 On Windows, use `py` instead of `python` if `python` is not on your PATH.
 
-**What the prototype covers.** It runs the deterministic half of the design (config validation, gates, scoring, ranking and the extraction-output validator) on fact sheets that stand in for reviewer-approved AI extractions. It does not call an AI model. The brief asks that proposal text is not copied into the repository, so the extraction prompt has not been run on the samples here. The tests use invented data to check budget and deadline exactly at and just above their limits, missing and contradictory inputs, invalid weights, ties, and that instruction-like document text cannot become a scoring input. They do not test how a live model resists prompt injection.
-
-## AI assistance
-
-I used Claude (Anthropic), running as Claude Code, to draft this repository from a detailed task specification I gave it. It read the brief, proposed the rubric, wrote the documents and prototype, rendered the diagram and ran the checks described above. Claude worked from a low-resolution screenshot of the brief, so I checked the budget ceiling, Proposal A's workmanship warranty and Proposal B's price against the original PDF myself. I also read WRITEUP.md and PROMPTS.md in full, ran the scorer and unit tests on my own machine, and went through the diagram step by step against the process it describes.
-
-**Where I disagreed with or corrected the AI:** Claude's first version scored Proposal C normally and only attached a warning about the instruction hidden in its appendix. I changed the security policy to hold instead. The instruction had no effect on the points, but a bid that tries to steer the evaluator should not sit in a ranked shortlist until a person has checked it. C is now flagged rather than ranked 3rd. If a reviewer clears it, it would score 56.40 and rank 3rd, so the change affects its status, not the arithmetic. Both options remain in the config (`hold` or `score_with_warning`).
-
-## Notes
-
-- The brief and the sample proposal text are not reproduced here. Proposals are referred to by letter, and [approved_facts.json](prototype/approved_facts.json) holds only the values transcribed from them.
-- All companies and details in the brief are fictional. No real client or personal data is used.
+**What the prototype covers.** It runs the deterministic half of the design (config validation, gates, scoring, ranking and the extraction-output validator) on fact sheets that stand in for reviewer-approved AI extractions. It does not call an AI model. The tests use invented data to check budget and deadline exactly at and just above their limits, missing and contradictory inputs, invalid weights, ties, and that instruction-like document text cannot become a scoring input.
